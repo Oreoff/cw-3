@@ -25,6 +25,11 @@ import androidx.compose.ui.unit.dp
 import ua.edu.lntu.cw3.ui.theme.IPZ_CR_3Theme
 import ua.edu.lntu.cw3.data.Datasource
 import ua.edu.lntu.cw3.model.CardText
+import androidx.compose.foundation.layout.padding
+import androidx.compose.ui.platform.LocalContext
+import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.items
+
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -55,8 +60,15 @@ fun card(card:CardText, modifier: Modifier = Modifier) {
     )
 }
 @Composable
-fun cardList(cardList: List<CardText>, modifier: Modifier = Modifier) {
-
+fun CardList(cardList: List<CardText>, modifier: Modifier = Modifier) {
+    LazyColumn(modifier = modifier) {
+        items(cardList) {card ->
+            card(
+                card = card,
+                modifier = Modifier.padding(8.dp)
+            )
+        }
+    }
 
 }
 @Preview(showBackground = true)
