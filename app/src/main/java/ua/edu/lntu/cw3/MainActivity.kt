@@ -52,11 +52,11 @@ fun card(card:CardText, modifier: Modifier = Modifier) {
 
     Text(
         text = LocalContext.current.getString(card.stringResourceIdName),
-        modifier = modifier
+        modifier = modifier.padding(bottom = 10.dp)
     )
     Text(
         text = LocalContext.current.getString(card.stringResourceIdDescription),
-        modifier = modifier
+        modifier = modifier.padding(bottom = 10.dp)
     )
 }
 @Composable
@@ -65,16 +65,22 @@ fun CardList(cardList: List<CardText>, modifier: Modifier = Modifier) {
         items(cardList) {card ->
             card(
                 card = card,
-                modifier = Modifier.padding(8.dp)
+                modifier = Modifier.padding(bottom = 20.dp)
             )
         }
     }
 
 }
+@Composable
+fun CardApp() {
+    CardList(
+        cardList = Datasource().loadCards(),
+    )
+}
 @Preview(showBackground = true)
 @Composable
 fun GreetingPreview() {
     IPZ_CR_3Theme {
-
+CardApp()
     }
 }
