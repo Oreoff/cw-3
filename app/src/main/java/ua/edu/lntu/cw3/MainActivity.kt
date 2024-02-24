@@ -9,6 +9,7 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.material3.Card
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
@@ -22,7 +23,8 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import ua.edu.lntu.cw3.ui.theme.IPZ_CR_3Theme
-
+import ua.edu.lntu.cw3.data.Datasource
+import ua.edu.lntu.cw3.model.CardText
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -33,7 +35,7 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.background
                 ) {
-                    Greeting("Android")
+                    GreetingPreview()
                 }
             }
         }
@@ -41,18 +43,26 @@ class MainActivity : ComponentActivity() {
 }
 
 @Composable
-fun Greeting(name: String, modifier: Modifier = Modifier) {
+fun card(card:CardText, modifier: Modifier = Modifier) {
 
     Text(
-        text = "Hello $name!",
+        text = LocalContext.current.getString(card.stringResourceIdName),
+        modifier = modifier
+    )
+    Text(
+        text = LocalContext.current.getString(card.stringResourceIdDescription),
         modifier = modifier
     )
 }
+@Composable
+fun cardList(cardList: List<CardText>, modifier: Modifier = Modifier) {
 
+
+}
 @Preview(showBackground = true)
 @Composable
 fun GreetingPreview() {
     IPZ_CR_3Theme {
-        Greeting("Android")
+
     }
 }
