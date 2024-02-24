@@ -69,7 +69,6 @@ fun CardList(cardList: List<CardText>, modifier: Modifier = Modifier) {
             )
         }
     }
-
 }
 @Composable
 fun CardApp() {
